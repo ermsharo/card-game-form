@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Dashboard from "./components/DashBoard";
+
+console.log("Testando a nossa publicação");
+
+// O que precisa ser feito
+
+let localStorageFake = [];
+
+const editCard = () => {};
+const addCard = () => {};
+
+const removeCard = () => {};
+
+const createCard = (
+  id: number,
+  name: string,
+  description: string,
+  atack: string,
+  defense: number,
+  cardType: string,
+  cardClass: string
+) => {};
+
+console.log("fix");
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Dashboard />
     </div>
   );
 }
