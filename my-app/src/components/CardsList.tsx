@@ -3,86 +3,23 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { reference } from "@popperjs/core";
 
-const removeItem = () => {};
+let localStorageFake = [];
 
-let generatedInfo = () => {};
+const editCard = () => {};
+const addCard = () => {};
 
-const getIdList = () => {
-  let idList = localStorage.getItem("idList");
-  if (idList === null) {
-    return [];
-  }
-  return JSON.parse(idList);
-};
+const removeCard = () => {};
 
-const getLastId = () => {
-  let referenceIdList = getIdList();
-  if (referenceIdList == null) {
-    return 0;
-  }
-  let reference = getIdList();
-  if (reference.length == 0) return 0;
-  reference.sort();
-  return parseInt(reference.slice(-1));
-};
-
-const addId = () => {
-  let nextId = getLastId() + 1;
-  console.log("next id", nextId);
-  let idList: string[] = getIdList();
-  let reference: string[] = [];
-  reference.push(nextId.toString());
-  console.log("reference", reference);
-  localStorage.setItem("idList", JSON.stringify(reference.concat(idList)));
-};
-
-const createCardObj = (
+const createCard = (
   id: number,
   name: string,
   description: string,
-  atack: number,
+  atack: string,
   defense: number,
   cardType: string,
   cardClass: string
-) => {
-  return {
-    id: id,
-    name: name,
-    description: description,
-    atack: atack,
-    defense: defense,
-    cardType: cardType,
-    cardClass: cardClass,
-  };
-};
-
-const createCard = (
-  name: string,
-  description: string,
-  atack: number,
-  defense: number,
-  cardType: string,
-  cardClass: string
-) => {
-  let nextId = getLastId() + 1;
-  addId();
-  localStorage.setItem(
-    nextId.toString(),
-    JSON.stringify(
-      createCardObj(
-        nextId,
-        name,
-        description,
-        atack,
-        defense,
-        cardType,
-        cardClass
-      )
-    )
-  );
-};
+) => {};
 
 const LoginBox = styled.div`
   padding-top: 32px;
@@ -139,6 +76,11 @@ const cardClasses = [
   },
 ];
 
+
+
+
+
+
 function Dashboard() {
   const [formInputs, setFormInputs] = useState({
     name: "",
@@ -159,7 +101,6 @@ function Dashboard() {
 
   return (
     <Grid>
-      <>id here {getIdList()}</>
       <LoginBox>
         <TextField
           fullWidth
@@ -197,6 +138,7 @@ function Dashboard() {
           type="number"
           value={formInputs.defense}
           onChange={handleChange}
+          InputProps={{ inputProps: { min: "0", max: "10", step: "0" } }}
         />
 
         <TextField
@@ -207,6 +149,7 @@ function Dashboard() {
           name="cardType"
           value={formInputs.cardType}
           onChange={handleChange}
+          InputProps={{ inputProps: { min: "0", max: "10", step: "0" } }}
         >
           {cardTypes.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -233,14 +176,7 @@ function Dashboard() {
 
         <Button
           onClick={() => {
-            createCard(
-              formInputs.name,
-              formInputs.description,
-              formInputs.atack,
-              formInputs.defense,
-              formInputs.cardType,
-              formInputs.cardClass
-            );
+            // singIn();
           }}
           fullWidth
           variant="contained"
