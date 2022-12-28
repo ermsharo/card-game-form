@@ -3,14 +3,18 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import ImageIcon from '@mui/icons-material/Image';
 // import WorkIcon from '@mui/icons-material/Work';
 // import BeachAccessIcon from '@mui/icons-material/BeachAccess';
@@ -62,6 +66,7 @@ const CardsList = styled.div`
   gap: 16px;
 `;
 
+
 const getIdList = () => {
   let idList = localStorage.getItem("idList");
   if (idList === null) {
@@ -70,22 +75,39 @@ const getIdList = () => {
   return JSON.parse(idList);
 };
 
-const getElementById = (id: number) => {
+const getElementById = (id:number) =>{
   return localStorage.getItem(`${id}`);
-};
+}
 
-function CardList() {
+
+function ListElement() {
+
   return (
     <Grid>
       <CardsList>
-        <Paper elevation={3}>
-          {getIdList().map((cardElement: any) => (
-            <div>aaa</div>
-          ))}
-        </Paper>
+      <Paper elevation={3} >
+      {getIdList().map((cardElement:any) => (
+             <div >
+        
+                  
+            aaa
+               
+       
+             </div>
+     
+           ))}
+
+      </Paper>
+ 
       </CardsList>
+
+ 
+
+
+
+
     </Grid>
   );
 }
 
-export default CardList;
+export default ListElement;
