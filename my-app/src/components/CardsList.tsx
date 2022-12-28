@@ -1,45 +1,5 @@
-import React, { useState } from "react";
 import styled from "styled-components";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-
-// import ImageIcon from '@mui/icons-material/Image';
-// import WorkIcon from '@mui/icons-material/Work';
-// import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-
-let localStorageFake = [];
-
-const editCard = () => {};
-const addCard = () => {};
-
-const removeCard = () => {};
-
-const createCard = (
-  id: number,
-  name: string,
-  description: string,
-  atack: string,
-  defense: number,
-  cardType: string,
-  cardClass: string
-) => {};
-
-const LoginBox = styled.div`
-  padding-top: 32px;
-  grid-column: 3/7;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 16px;
-`;
+import ListElement from "./ListElement";
 
 const Grid = styled.div`
   display: grid;
@@ -59,7 +19,6 @@ const CardsList = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 16px;
 `;
 
 const getIdList = () => {
@@ -70,20 +29,34 @@ const getIdList = () => {
   return JSON.parse(idList);
 };
 
-const getElementById = (id: number) => {
-  return localStorage.getItem(`${id}`);
+const getCardById = (id: number): string => {
+  let card: any = localStorage.getItem(`${id}`);
+  if (card == null) card = undefined;
+  return card;
 };
+
+interface cardType {
+  id: number;
+  name: string;
+  description: string;
+  atack: number;
+  defense: number;
+  cardType: string;
+  cardClass: string;
+}
 
 function CardList() {
   return (
     <Grid>
       <CardsList>
-        <Paper elevation={3}>
-          {getIdList().map((cardElement: any) => (
-            <div>aaa</div>
-          ))}
-        </Paper>
+        {getIdList().map(
+          (cardId: number) =>
+            getCardById(cardId) != null && (
+              <ListElement element={JSON.parse(getCardById(cardId))} />
+            )
+        )}
       </CardsList>
+      <div></div>
     </Grid>
   );
 }

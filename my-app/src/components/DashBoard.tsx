@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { reference } from "@popperjs/core";
 import CardList from "./CardsList";
+import NewCard from "./NewCard";
 
 const removeItem = () => {};
 
@@ -18,6 +18,10 @@ const getIdList = () => {
   return JSON.parse(idList);
 };
 
+const getCardById = (id: number) => {
+  return localStorage.getItem(`${id}`);
+};
+
 const getLastId = () => {
   let referenceIdList = getIdList();
   if (referenceIdList == null) {
@@ -28,8 +32,6 @@ const getLastId = () => {
   reference.sort();
   return parseInt(reference.slice(-1));
 };
-
-
 
 const addId = () => {
   let nextId = getLastId() + 1;
@@ -96,9 +98,6 @@ const LoginBox = styled.div`
   gap: 16px;
 `;
 
-
-
-
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -164,99 +163,10 @@ function Dashboard() {
   }
 
   return (
-    <>      <CardList/> <Grid>
-
-
-    <LoginBox>
-      <TextField
-        fullWidth
-        id="outlined-name"
-        label="Nome"
-        name="name"
-        value={formInputs.name}
-        onChange={handleChange}
-      />
-
-      <TextField
-        fullWidth
-        id="outlined-name"
-        label="Descrição"
-        name="description"
-        value={formInputs.description}
-        onChange={handleChange}
-      />
-
-      <TextField
-        fullWidth
-        id="outlined-name"
-        label="Ataque"
-        name="atack"
-        type="number"
-        value={formInputs.atack}
-        onChange={handleChange}
-      />
-
-      <TextField
-        fullWidth
-        id="outlined-name"
-        label="Defesa"
-        name="defense"
-        type="number"
-        value={formInputs.defense}
-        onChange={handleChange}
-      />
-
-      <TextField
-        fullWidth
-        select
-        id="outlined-name"
-        label="Tipo"
-        name="cardType"
-        value={formInputs.cardType}
-        onChange={handleChange}
-      >
-        {cardTypes.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
-
-      <TextField
-        fullWidth
-        select
-        id="outlined-name"
-        label="Classes"
-        name="cardClass"
-        value={formInputs.cardClass}
-        onChange={handleChange}
-      >
-        {cardClasses.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
-
-      <Button
-        onClick={() => {
-          createCard(
-            formInputs.name,
-            formInputs.description,
-            formInputs.atack,
-            formInputs.defense,
-            formInputs.cardType,
-            formInputs.cardClass
-          );
-        }}
-        fullWidth
-        variant="contained"
-      >
-        Criar usuario
-      </Button>
-    </LoginBox>
-  </Grid></>
-   
+    <>
+      {" "}
+      <CardList /> <NewCard />
+    </>
   );
 }
 
