@@ -38,6 +38,17 @@ export const setIdList = (IdList: any) => {
   localStorage.setItem("idList", JSON.stringify(IdList));
 };
 
+export const setSearchList = (searchList: any) => {
+  console.log("id list atualizando");
+  localStorage.setItem("searchList", JSON.stringify(searchList));
+};
+
+export const getSearchList = (searchList: any) => {
+  console.log("id list atualizando");
+  localStorage.setItem("searchList", JSON.stringify(searchList));
+};
+
+
 export const removeIdFromIdList = (id: number) => {
   console.log("remove id from list chamado", id);
   let idList = getIdList();

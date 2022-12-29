@@ -6,8 +6,8 @@ import {
   editCardById,
 } from "./dataManagement";
 
-export const CardsManagement = (searchText: string) => {
-  const [data, setData] = useState([]); //retorna a lista de cartas aqui
+export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
+  const [data, setData] = useState<any>([]); //retorna a lista de cartas aqui
   const deleteCard = (id: number) => {
     removeIdFromIdList(id);
     setData(getCardsList());
@@ -30,15 +30,25 @@ export const CardsManagement = (searchText: string) => {
     } else {
       editCardById(id, name, description, atack, defense, cardType, cardClass);
     }
-    setData(getCardsList());
+
   };
 
   useEffect(() => {
     setData(getCardsList());
   }, [data]);
 
-  const filterDataByChoice = (choice: boolean, searchText: string) => {
-    if (choice) {
+  const filterDataFromText = () =>{
+    const filtered =  data.filter((cards:any) => cards.name.includes(searchText));
+    console.log(filtered);
+
+  }
+
+  const filterDataByChoice = () => {
+    if (searchSwitch) {
+      console.log("Pequisando por id" )
+    }else{
+      console.log("Pequisando por nome" )
+      filterDataFromText()
     }
   };
 
@@ -48,6 +58,7 @@ export const CardsManagement = (searchText: string) => {
 
   useEffect(() => {
     console.log("search text", searchText);
+    filterDataByChoice()
   }, [searchText]);
 
   return [data, deleteCard, editCard];

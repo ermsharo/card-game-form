@@ -65,11 +65,13 @@ function ListElement({ element, deleteCard, editCard }: any) {
       <MuiAccordionSummary>
         {expanded ? (
           <CardTitle>
-            <div>{name}</div>{" "}
+            <div>
+              {name} : {id}{" "}
+            </div>{" "}
           </CardTitle>
         ) : (
           <CardTitle>
-            <div>{`${name}`}</div>
+            <div>{`${name} : ${id}`}</div>
             <div>{`⚔️ ${atack} 🛡️ ${defense}`}</div>
           </CardTitle>
         )}

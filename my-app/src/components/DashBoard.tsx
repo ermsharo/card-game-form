@@ -55,7 +55,7 @@ function Dashboard() {
     setSearchSwitch(event.target.checked);
   };
 
-  const [data, deleteCard, editCard] = CardsManagement(search);
+  const [data, deleteCard, editCard] = CardsManagement(search, searchSwitch);
   return (
     <>
       <AppBar position="static">
