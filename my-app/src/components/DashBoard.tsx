@@ -9,6 +9,8 @@ import { CardsManagement } from "./../utils/CardsManagement";
 import styled from "styled-components";
 import ClassCardOptions from "./ClassCardsOptions";
 import TypeCardOptions from "./TypeCardsOptions";
+import { useState } from "react";
+import TextField from "@mui/material/TextField";
 const DashboardBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -18,17 +20,23 @@ const DashboardBox = styled.div`
   margin-top: 4rem;
 `;
 
+const DashboardSearchBox = styled.div``;
+
 const OptionsBox = styled.div`
   grid-column: 1/3;
-  border: 2px solid red;
 `;
 
 const CardListBox = styled.div`
   grid-column: 3/9;
-  border: 2px solid red;
 `;
 
 function Dashboard() {
+  const [search, setSearch] = useState("");
+
+  function handleChange(evt: any) {
+    setSearch(evt.target.value);
+  }
+
   const [data, deleteCard, editCard] = CardsManagement();
   return (
     <>
@@ -45,10 +53,21 @@ function Dashboard() {
       <DashboardBox>
         <OptionsBox>
           <ClassCardOptions />
-          <TypeCardOptions/>
+          <TypeCardOptions />
         </OptionsBox>
+
         <CardListBox>
-          {" "}
+          <DashboardSearchBox>
+            {" "}
+            <TextField
+              fullWidth
+              id="outlined-name"
+              label="Nome"
+              name="name"
+              value={search}
+              onChange={handleChange}
+            />
+          </DashboardSearchBox>
           <CardList data={data} deleteCard={deleteCard} editCard={editCard} />
           <NewCard editCard={editCard} />
         </CardListBox>

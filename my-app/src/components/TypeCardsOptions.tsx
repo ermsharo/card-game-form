@@ -8,10 +8,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormHelperText from "@mui/material/FormHelperText";
 import Checkbox from "@mui/material/Checkbox";
 
-
 const CardOptionsBox = styled.div`
-padding: 16px;
-text-align: left; 
+  padding: 16px;
+  text-align: left;
 `;
 
 function TypeCardsOptions() {
@@ -30,40 +29,46 @@ function TypeCardsOptions() {
     });
   };
 
-  const { mago, paladino, caçador, druida, qualquer} = cardClasses;
+  const { mago, paladino, caçador, druida, qualquer } = cardClasses;
 
   return (
-   
-      <CardOptionsBox>
-        <FormLabel component="legend">Tipos</FormLabel>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox checked={mago} onChange={handleChange} name="mago" />
-            }
-            label="Mago"
-          />
-             <FormControlLabel
-            control={
-              <Checkbox checked={paladino} onChange={handleChange} name="paladino" />
-            }
-            label="Paladino"
-          />
-               <FormControlLabel
-            control={
-              <Checkbox checked={caçador} onChange={handleChange} name="caçador" />
-            }
-            label="Caçador"
-          />
-               <FormControlLabel
-            control={
-              <Checkbox checked={druida} onChange={handleChange} name="druida" />
-            }
-            label="Druida"
-          />
-
-           </FormGroup>
-      </CardOptionsBox>
+    <CardOptionsBox>
+      <FormLabel component="legend">Tipos</FormLabel>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Checkbox checked={mago} onChange={handleChange} name="mago" />
+          }
+          label="Mago"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={paladino}
+              onChange={handleChange}
+              name="paladino"
+            />
+          }
+          label="Paladino"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={caçador}
+              onChange={handleChange}
+              name="caçador"
+            />
+          }
+          label="Caçador"
+        />
+        <FormControlLabel
+          control={
+            <Checkbox checked={druida} onChange={handleChange} name="druida" />
+          }
+          label="Druida"
+        />
+      </FormGroup>
+    </CardOptionsBox>
   );
 }
 
