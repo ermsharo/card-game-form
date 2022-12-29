@@ -13,10 +13,7 @@ const NewCardBox = styled.div`
   gap: 16px;
 `;
 
-
-
-
-function EditCard({ element, editCard }: any) {
+function EditCard({ element, editCard, setEditMode }: any) {
   let { id, name, description, atack, defense, cardType, cardClass } = element;
 
   const [formInputs, setFormInputs] = useState({
@@ -119,6 +116,7 @@ function EditCard({ element, editCard }: any) {
             formInputs.cardType,
             formInputs.cardClass
           );
+          setEditMode(false);
         }}
         fullWidth
         variant="contained"

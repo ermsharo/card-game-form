@@ -24,7 +24,7 @@ const CardInfo = styled.div`
   padding: 1rem;
 `;
 
-const CardName = styled.div`
+const CardTitle = styled.div`
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -37,11 +37,17 @@ const CardName = styled.div`
 const CardLine = styled.div`
   display: flex;
   gap: 1.5rem;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const BottonLine = styled.div`
   display: flex;
   gap: 1.5rem;
+  justify-content: end;
+  width: 100%;
 `;
 
 function ListElement({ element, deleteCard, editCard }: any) {
@@ -58,14 +64,14 @@ function ListElement({ element, deleteCard, editCard }: any) {
     <MuiAccordion expanded={expanded} onChange={handleChange()}>
       <MuiAccordionSummary>
         {expanded ? (
-          <CardName>
+          <CardTitle>
             <div>{name}</div>{" "}
-          </CardName>
+          </CardTitle>
         ) : (
-          <CardName>
+          <CardTitle>
             <div>{`${name}`}</div>
             <div>{`⚔️ ${atack} 🛡️ ${defense}`}</div>
-          </CardName>
+          </CardTitle>
         )}
       </MuiAccordionSummary>
       <MuiAccordionDetails>
@@ -100,7 +106,13 @@ function ListElement({ element, deleteCard, editCard }: any) {
           </CardInfo>
         )}
 
-        <EditCard element={element} editCard={editCard} />
+        {editMode && (
+          <EditCard
+            element={element}
+            editCard={editCard}
+            setEditMode={setEditMode}
+          />
+        )}
       </MuiAccordionDetails>
     </MuiAccordion>
   );

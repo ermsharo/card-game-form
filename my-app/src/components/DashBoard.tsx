@@ -1,5 +1,3 @@
-import { useState } from "react";
-import styled from "styled-components";
 import CardList from "./CardsList";
 import NewCard from "./NewCard";
 import AppBar from "@mui/material/AppBar";
@@ -8,6 +6,27 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { CardsManagement } from "./../utils/CardsManagement";
+import styled from "styled-components";
+import ClassCardOptions from "./ClassCardsOptions";
+import TypeCardOptions from "./TypeCardsOptions";
+const DashboardBox = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 80vw;
+  margin: auto;
+  grid-column-gap: 2rem;
+  margin-top: 4rem;
+`;
+
+const OptionsBox = styled.div`
+  grid-column: 1/3;
+  border: 2px solid red;
+`;
+
+const CardListBox = styled.div`
+  grid-column: 3/9;
+  border: 2px solid red;
+`;
 
 function Dashboard() {
   const [data, deleteCard, editCard] = CardsManagement();
@@ -23,8 +42,17 @@ function Dashboard() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <CardList data={data} deleteCard={deleteCard} editCard={editCard} />
-      <NewCard editCard={editCard} />
+      <DashboardBox>
+        <OptionsBox>
+          <ClassCardOptions />
+          <TypeCardOptions/>
+        </OptionsBox>
+        <CardListBox>
+          {" "}
+          <CardList data={data} deleteCard={deleteCard} editCard={editCard} />
+          <NewCard editCard={editCard} />
+        </CardListBox>
+      </DashboardBox>
     </>
   );
 }
