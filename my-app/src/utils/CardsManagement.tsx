@@ -6,7 +6,7 @@ import {
   editCardById,
 } from "./dataManagement";
 
-export const CardsManagement = () => {
+export const CardsManagement = (searchText: string) => {
   const [data, setData] = useState([]); //retorna a lista de cartas aqui
   const deleteCard = (id: number) => {
     removeIdFromIdList(id);
@@ -36,6 +36,19 @@ export const CardsManagement = () => {
   useEffect(() => {
     setData(getCardsList());
   }, [data]);
+
+  const filterDataByChoice = (choice: boolean, searchText: string) => {
+    if (choice) {
+    }
+  };
+
+  const filterDataByType = () => {};
+
+  const filterDataByClass = () => {};
+
+  useEffect(() => {
+    console.log("search text", searchText);
+  }, [searchText]);
 
   return [data, deleteCard, editCard];
 };

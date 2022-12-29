@@ -27,6 +27,9 @@ const DashboardSearchBox = styled.div`
   display: flex;
   gap: 1.5rem;
   font-size: 1rem;
+  input {
+    font-size: 1.5rem;
+  }
 `;
 
 const OptionsBox = styled.div`
@@ -52,7 +55,7 @@ function Dashboard() {
     setSearchSwitch(event.target.checked);
   };
 
-  const [data, deleteCard, editCard] = CardsManagement();
+  const [data, deleteCard, editCard] = CardsManagement(search);
   return (
     <>
       <AppBar position="static">
@@ -61,7 +64,7 @@ function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" component="div">
-            Card app
+            Hearstone app
           </Typography>
         </Toolbar>
       </AppBar>
@@ -72,7 +75,6 @@ function Dashboard() {
         </OptionsBox>
 
         <CardListBox>
-          {search}
           <DashboardSearchBox>
             <TextField
               fullWidth
