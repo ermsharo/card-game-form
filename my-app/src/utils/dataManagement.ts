@@ -6,7 +6,14 @@ export const getIdList = () => {
   return JSON.parse(idList);
 };
 
-export const getCardById = (id: number): string => {
+export const getCardsList = () => {
+    return getIdList().map((cardId: number) => {
+      return JSON.parse(getCardById(cardId));
+    });
+  };
+
+
+ const getCardById = (id: number): string => {
   let card: any = localStorage.getItem(`${id}`);
   if (card == null) card = undefined;
   return card;
@@ -16,11 +23,7 @@ const removeItem = (key: string) => {
   localStorage.removeItem(key);
 };
 
-export const getCardsList = () => {
-  return getIdList().map((cardId: number) => {
-    return JSON.parse(getCardById(cardId));
-  });
-};
+
 
 export const getLastId = () => {
   let referenceIdList = getIdList();

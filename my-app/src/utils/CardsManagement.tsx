@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getIdList, getCardById, removeIdFromIdList } from "./dataManagement";
+import { getIdList, getCardsList, removeIdFromIdList } from "./dataManagement";
 
 export const CardsManagement = () => {
   const [data, setData] = useState([]); //retorna a lista de cartas aqui
@@ -8,18 +8,18 @@ export const CardsManagement = () => {
   const deleteCard = (id: number) => {
     removeIdFromIdList(id);
   };
-  const editCard = () => {
-    //Se não existir criar, caso contrario editar
+
+  const verifyGame = () => {
+    //arr.some(item => item.a === 'b')
   };
 
-  const getList = () => {
-    return getIdList().map((cardId: number) => {
-      return JSON.parse(getCardById(cardId));
-    });
+  const editCard = (element: any) => {
+    //Se não existir criar, caso contrario editar
+    console.log("element", element);
   };
 
   useEffect(() => {
-    setData(getList());
+    setData(getCardsList());
   }, [data]);
 
   return [data, deleteCard, editCard];

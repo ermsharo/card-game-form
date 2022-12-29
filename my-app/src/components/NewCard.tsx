@@ -222,7 +222,7 @@ function Dashboard() {
               fullWidth
               variant="contained"
             >
-              Criar usuario
+              Inserir nova carta
             </Button>
           </NewCardBox>
         </MuiAccordion>
