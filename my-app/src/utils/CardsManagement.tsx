@@ -94,7 +94,7 @@ export const CardsManagement = (
   useEffect(() => {
     updateResearchFromTags();
     console.log("typeTags", typeTags);
-  }, [classTags, typeTags, searchText, updateResearchFromTags]);
+  }, [classTags, typeTags, searchText]);
 
   return [data, filteredData, deleteCard, editCard];
 };
