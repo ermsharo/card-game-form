@@ -20,6 +20,19 @@ export const CardsManagement = (
     setData(getCardsList());
   };
 
+  const verifyClass = (element:any) =>{
+    let elemClass = element.cardClass.toLowerCase();
+    if(classTags[elemClass]) return true;
+    return false;
+}
+  const filterByTags = () =>{
+    const results = filteredData.filter((element: any)=> {
+        return verifyClass(element);
+      });
+      return results;
+}
+
+
   const editCard = (
     id: number,
     name: string,
@@ -43,6 +56,8 @@ export const CardsManagement = (
     setData(getCardsList());
   }, [data]);
 
+
+
   const filterDataFromText = () => {
     const filtered = data.filter((cards: any) =>
       cards.name.includes(searchText)
@@ -55,29 +70,34 @@ export const CardsManagement = (
     const filtered = data.filter(
       (cards: any) => cards.id === Number(searchText)
     );
-    console.log(filtered);
+
+
     setFilteredData(filtered);
   };
 
   const filterDataByChoice = () => {
+    if (searchText === "") {
+      setFilteredData(data);
+      return;
+    }
     if (searchSwitch) {
-      console.log("Pequisando por id");
       filterDataFromId();
     } else {
-      console.log("Pequisando por nome");
       filterDataFromText();
     }
   };
 
   useEffect(() => {
-    console.log("search text", searchText);
     filterDataByChoice();
-  }, [searchText]);
+  }, [searchText, data]);
+
+  const updateResearchFromTags = () =>{
+    setFilteredData(filterByTags());
+  }
 
   useEffect(() => {
-    console.log("class tags", classTags);
-    console.log("type tags", typeTags);
-  }, [classTags, typeTags]);
+    updateResearchFromTags();
+  }, [classTags, typeTags, searchText]);
 
   return [data, filteredData, deleteCard, editCard];
 };

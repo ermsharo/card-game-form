@@ -19,22 +19,10 @@ interface cardType {
   cardClass: string;
 }
 
-function CardList({ data, deleteCard, editCard, fileteredData, search }: any) {
+function CardList({ data, deleteCard, editCard, fileteredData }: any) {
   if (!data) return <h1>Erro ao carregar os dados</h1>;
 
-  return !search ? (
-    <CardsList>
-      {data.map((card: cardType) => (
-        <div>
-          <ListElement
-            element={card}
-            deleteCard={deleteCard}
-            editCard={editCard}
-          />
-        </div>
-      ))}
-    </CardsList>
-  ) : (
+  return (
     <CardsList>
       {fileteredData.map((card: cardType) => (
         <div>

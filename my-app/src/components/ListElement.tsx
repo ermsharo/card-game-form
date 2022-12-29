@@ -66,8 +66,8 @@ function ListElement({ element, deleteCard, editCard }: any) {
         {expanded ? (
           <CardTitle>
             <div>
-              {name} : {id}{" "}
-            </div>{" "}
+              {name} : {id}
+            </div>
           </CardTitle>
         ) : (
           <CardTitle>
@@ -99,7 +99,6 @@ function ListElement({ element, deleteCard, editCard }: any) {
                 </div>
               </BottonLine>
             </CardLine>
-
             <div> Descrição: {description} </div>
             <CardLine>
               <div> Tipo: {cardType} </div>
