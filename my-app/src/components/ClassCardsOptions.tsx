@@ -10,7 +10,7 @@ const CardOptionsBox = styled.div`
   text-align: left;
 `;
 
-function ClassCardOptions() {
+function ClassCardOptions({setClassTags}:any) {
   const [cardClasses, setCardClasses] = React.useState({
     mago: true,
     paladino: true,
@@ -24,6 +24,8 @@ function ClassCardOptions() {
       ...cardClasses,
       [event.target.name]: event.target.checked,
     });
+    console.log("card classes",cardClasses)
+    setClassTags(cardClasses);
   };
 
   const { mago, paladino, caçador, druida, qualquer } = cardClasses;

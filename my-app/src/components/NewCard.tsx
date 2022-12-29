@@ -34,7 +34,7 @@ const CardInfo = styled.div`
   padding: 1rem;
 `;
 
-function NewCard({ editCard }: any) {
+function NewCard({ editCard, setSearch }: any) {
   const [formInputs, setFormInputs] = useState({
     name: "",
     description: "",
@@ -140,6 +140,7 @@ function NewCard({ editCard }: any) {
                 formInputs.cardType,
                 formInputs.cardClass
               );
+              setSearch("");
             }}
             fullWidth
             variant="contained"

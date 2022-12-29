@@ -6,19 +6,6 @@ import {
   editCardById,
 } from "./dataManagement";
 
-const setSearchList = (searchList: any) => {
-  console.log("id list atualizando");
-  localStorage.setItem("searchList", JSON.stringify(searchList));
-};
-
-const getSearchList = () => {
-  let searchList = localStorage.getItem("searchList");
-  if (searchList === null) {
-    return [];
-  }
-  return JSON.parse(searchList);
-};
-
 export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
   const [data, setData] = useState<any>([]); //retorna a lista de cartas aqui
   const [filteredData, setFilteredData] = useState<any>([]);
@@ -56,18 +43,16 @@ export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
       cards.name.includes(searchText)
     );
     console.log(filtered);
-    setFilteredData(filtered)
+    setFilteredData(filtered);
   };
 
   const filterDataFromId = () => {
-    const filtered = data.filter((cards: any) =>
-      cards.id === (Number(searchText))
+    const filtered = data.filter(
+      (cards: any) => cards.id === Number(searchText)
     );
     console.log(filtered);
-    setFilteredData(filtered)
+    setFilteredData(filtered);
   };
-
-  const verifyTags = () => {};
 
   const filterDataByChoice = () => {
     if (searchSwitch) {
@@ -78,10 +63,6 @@ export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
       filterDataFromText();
     }
   };
-
-  const filterDataByType = () => {};
-
-  const filterDataByClass = () => {};
 
   useEffect(() => {
     console.log("search text", searchText);

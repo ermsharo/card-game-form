@@ -10,7 +10,7 @@ const CardOptionsBox = styled.div`
   text-align: left;
 `;
 
-function TypeCardsOptions() {
+function TypeCardsOptions({setTypeTags}:any) {
   const [cardTypes, setTypeCards] = React.useState({
     magia: true,
     criatura: true,

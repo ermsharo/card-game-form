@@ -42,12 +42,15 @@ const CardListBox = styled.div`
 
 function Dashboard() {
   const [search, setSearch] = useState("");
+  const [searchSwitch, setSearchSwitch] = useState(true);
+  const [classTags, setClassTags] = useState(null);
+  const [typeTags , setTypeTags] = useState(null);
+
 
   function handleChange(evt: any) {
     setSearch(evt.target.value);
   }
 
-  const [searchSwitch, setSearchSwitch] = useState(true);
 
   const handleChangeSearchSwitch = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -73,8 +76,8 @@ function Dashboard() {
       </AppBar>
       <DashboardBox>
         <OptionsBox>
-          <ClassCardOptions />
-          <TypeCardOptions />
+          <ClassCardOptions setClassTags = {setClassTags}/>
+          <TypeCardOptions  setTypeTags={setTypeTags}/>
         </OptionsBox>
 
         <CardListBox>
@@ -97,7 +100,7 @@ function Dashboard() {
             </Stack>
           </DashboardSearchBox>
           <CardList data={data} deleteCard={deleteCard} editCard={editCard}  fileteredData = {fileteredData} search={search}/>
-          <NewCard editCard={editCard} />
+          <NewCard editCard={editCard}  setSearch = {setSearch}/>
         </CardListBox>
       </DashboardBox>
     </>
