@@ -25,8 +25,8 @@ const DashboardBox = styled.div`
 `;
 
 const HeaderBox = styled.div`
-  padding: 0.5rem;
-  padding-left: 2rem;
+
+  padding: 2rem;
   font-size: 2rem;
   text-align: left;
 `;
