@@ -17,7 +17,6 @@ const CardTitle = styled.div`
   padding: 1rem;
 `;
 
-
 const NewCardBox = styled.div`
   padding-top: 32px;
   display: flex;
@@ -25,7 +24,6 @@ const NewCardBox = styled.div`
   flex-wrap: wrap;
   gap: 16px;
 `;
-
 
 const CardInfo = styled.div`
   font-size: 1.5rem;
@@ -42,8 +40,8 @@ function NewCard({ editCard }: any) {
     description: "",
     atack: 0,
     defense: 0,
-    cardType: "",
-    cardClass: "",
+    cardType: "Magia",
+    cardClass: "Mago",
   });
 
   function handleChange(evt: any) {
@@ -55,10 +53,9 @@ function NewCard({ editCard }: any) {
   }
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  const handleChangeAccordion =
-    () => () => {
-      setExpanded(!expanded);
-    };
+  const handleChangeAccordion = () => () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <MuiAccordion expanded={expanded} onChange={handleChangeAccordion()}>

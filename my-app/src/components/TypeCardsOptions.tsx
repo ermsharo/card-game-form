@@ -48,7 +48,6 @@ function TypeCardsOptions() {
           }
           label="Criatura"
         />
-
       </FormGroup>
     </CardOptionsBox>
   );
