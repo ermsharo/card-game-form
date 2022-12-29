@@ -29,8 +29,9 @@ export const getLastId = () => {
   }
   let reference = getIdList();
   if (reference.length == 0) return 0;
-  reference.sort();
-  return parseInt(reference.slice(-1));
+  console.log("reference array ", reference)
+
+  return parseInt(reference[0]);
 };
 
 export const setIdList = (IdList: any) => {
