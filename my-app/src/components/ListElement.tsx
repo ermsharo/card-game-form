@@ -43,8 +43,6 @@ const BottonLine = styled.div`
   gap: 1.5rem;
 `;
 
-
-
 function ListElement({ element }: any) {
   const [expanded, setExpanded] = React.useState<boolean>(false);
   let { id, name, description, atack, defense, cardType, cardClass } = element;
@@ -57,21 +55,24 @@ function ListElement({ element }: any) {
   return (
     <MuiAccordion expanded={expanded} onChange={handleChange()}>
       <MuiAccordionSummary>
-{(expanded) ? (      <CardName>
-        <div>{name}</div> <BottonLine>
-
-          <div>🗑️</div>
-          <div>✏️</div>
-        </BottonLine>
-      </CardName>) : (    <CardName>
-      <div>{`${name}`}</div>
-      <div>{`⚔️ ${atack} 🛡️ ${defense}`}</div>
-    </CardName>)}
+        {expanded ? (
+          <CardName>
+            <div>{name}</div>{" "}
+            <BottonLine>
+              <div>🗑️</div>
+              <div>✏️</div>
+            </BottonLine>
+          </CardName>
+        ) : (
+          <CardName>
+            <div>{`${name}`}</div>
+            <div>{`⚔️ ${atack} 🛡️ ${defense}`}</div>
+          </CardName>
+        )}
       </MuiAccordionSummary>
       <MuiAccordionDetails>
         <CardInfo>
           <CardLine>
-            {" "}
             <div>⚔️ Ataque: {atack} </div>
             <div>🛡️ Defesa: {defense} </div>
           </CardLine>

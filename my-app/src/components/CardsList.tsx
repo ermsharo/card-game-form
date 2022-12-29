@@ -45,6 +45,14 @@ interface cardType {
   cardClass: string;
 }
 
+const getList = () => {
+  return getIdList().map((cardId: number) => {
+    return JSON.parse(getCardById(cardId));
+  });
+};
+
+console.log("Card list ->", getList());
+
 function CardList() {
   return (
     <Grid>

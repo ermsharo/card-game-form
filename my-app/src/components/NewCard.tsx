@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import React from "react";
+import { cardTypes, cardClasses } from "./../utils/cardTypes";
 
 const getIdList = () => {
   let idList = localStorage.getItem("idList");
@@ -104,40 +105,6 @@ const Grid = styled.div`
     width: 80vw;
   }
 `;
-
-const cardTypes = [
-  {
-    value: "Magia",
-    label: "Magia",
-  },
-  {
-    value: "Criatura",
-    label: "Criatura",
-  },
-];
-
-const cardClasses = [
-  {
-    value: "Mago",
-    label: "Mago",
-  },
-  {
-    value: "Paladino",
-    label: "Paladino",
-  },
-  {
-    value: "Caçador",
-    label: "Caçador",
-  },
-  {
-    value: "Druida",
-    label: "Druida",
-  },
-  {
-    value: "Qualquer",
-    label: "Qualquer",
-  },
-];
 
 function Dashboard() {
   const [formInputs, setFormInputs] = useState({
