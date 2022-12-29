@@ -9,6 +9,13 @@ const CardsList = styled.div`
   flex-wrap: wrap;
 `;
 
+const CardsListElement = styled.div`
+  -webkit-box-shadow: 0px 6px 17px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 6px 17px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 17px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.25rem;
+`;
+
 interface cardType {
   id: number;
   name: string;
@@ -25,13 +32,13 @@ function CardList({ data, deleteCard, editCard, fileteredData }: any) {
   return (
     <CardsList>
       {fileteredData.map((card: cardType) => (
-        <div>
+        <CardsListElement>
           <ListElement
             element={card}
             deleteCard={deleteCard}
             editCard={editCard}
           />
-        </div>
+        </CardsListElement>
       ))}
     </CardsList>
   );

@@ -85,14 +85,13 @@ export const CardsManagement = (
 
   useEffect(() => {
     filterDataByChoice();
-  }, [searchText, data,classTags, typeTags]);
+  }, [searchText, data, classTags, typeTags, filterDataByChoice]);
 
   const updateResearchFromTags = () => {
     setFilteredData(filterByTags());
   };
 
   useEffect(() => {
-  
     console.log("typeTags", typeTags);
   }, [classTags, typeTags]);
 

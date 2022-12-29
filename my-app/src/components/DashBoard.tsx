@@ -24,6 +24,13 @@ const DashboardBox = styled.div`
   padding: 2rem;
 `;
 
+const HeaderBox = styled.div`
+  padding: 0.5rem;
+  padding-left: 2rem;
+  font-size: 2rem;
+  text-align: left;
+`;
+
 const DashboardSearchBox = styled.div`
   display: flex;
   gap: 1.5rem;
@@ -75,14 +82,7 @@ function Dashboard() {
   return (
     <>
       <AppBar position="static">
-        <Toolbar variant="dense">
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" component="div">
-            Hearstone app
-          </Typography>
-        </Toolbar>
+        <HeaderBox>Gerenciador de cartas</HeaderBox>
       </AppBar>
       <DashboardBox>
         <OptionsBox>
@@ -92,8 +92,6 @@ function Dashboard() {
 
         <CardListBox>
           <DashboardSearchBox>
-            {JSON.stringify(classTags)}
-            {JSON.stringify(typeTags)}
             <TextField
               fullWidth
               id="outlined-name"

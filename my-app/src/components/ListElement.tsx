@@ -66,12 +66,12 @@ function ListElement({ element, deleteCard, editCard }: any) {
         {expanded ? (
           <CardTitle>
             <div>
-              {name} : {id}
+              {name} - ID: {id}
             </div>
           </CardTitle>
         ) : (
           <CardTitle>
-            <div>{`${name} : ${id}`}</div>
+            <div>{`${name} - ID: ${id}`}</div>
             <div>{`⚔️ ${atack} 🛡️ ${defense}`}</div>
           </CardTitle>
         )}
