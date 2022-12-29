@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { createCard } from "./../utils/dataManagement";
+import { cardTypes, cardClasses } from "./../utils/cardTypes";
 
 const NewCardBox = styled.div`
   padding-top: 32px;
@@ -13,64 +13,19 @@ const NewCardBox = styled.div`
   gap: 16px;
 `;
 
-const GridSpace = styled.div`
-  grid-column: 3/7;
-`;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  width: 90vw;
-  margin: auto;
-  grid-column-gap: 32px;
 
-  @media (min-width: 1300px) {
-    width: 80vw;
-  }
-`;
 
-const cardTypes = [
-  {
-    value: "Magia",
-    label: "Magia",
-  },
-  {
-    value: "Criatura",
-    label: "Criatura",
-  },
-];
+function EditCard({ element, editCard }: any) {
+  let { id, name, description, atack, defense, cardType, cardClass } = element;
 
-const cardClasses = [
-  {
-    value: "Mago",
-    label: "Mago",
-  },
-  {
-    value: "Paladino",
-    label: "Paladino",
-  },
-  {
-    value: "Caçador",
-    label: "Caçador",
-  },
-  {
-    value: "Druida",
-    label: "Druida",
-  },
-  {
-    value: "Qualquer",
-    label: "Qualquer",
-  },
-];
-
-function EditCard() {
   const [formInputs, setFormInputs] = useState({
-    name: "",
-    description: "",
-    atack: 0,
-    defense: 0,
-    cardType: "",
-    cardClass: "",
+    name: name,
+    description: description,
+    atack: atack,
+    defense: defense,
+    cardType: cardType,
+    cardClass: cardClass,
   });
 
   function handleChange(evt: any) {
@@ -82,98 +37,95 @@ function EditCard() {
   }
 
   return (
-    <Grid>
-      <GridSpace>
-        <NewCardBox>
-          <TextField
-            fullWidth
-            id="outlined-name"
-            label="Nome"
-            name="name"
-            value={formInputs.name}
-            onChange={handleChange}
-          />
+    <NewCardBox>
+      <TextField
+        fullWidth
+        id="outlined-name"
+        label="Nome"
+        name="name"
+        value={formInputs.name}
+        onChange={handleChange}
+      />
 
-          <TextField
-            fullWidth
-            id="outlined-name"
-            label="Descrição"
-            name="description"
-            value={formInputs.description}
-            onChange={handleChange}
-          />
+      <TextField
+        fullWidth
+        id="outlined-name"
+        label="Descrição"
+        name="description"
+        value={formInputs.description}
+        onChange={handleChange}
+      />
 
-          <TextField
-            fullWidth
-            id="outlined-name"
-            label="Ataque"
-            name="atack"
-            type="number"
-            value={formInputs.atack}
-            onChange={handleChange}
-          />
+      <TextField
+        fullWidth
+        id="outlined-name"
+        label="Ataque"
+        name="atack"
+        type="number"
+        value={formInputs.atack}
+        onChange={handleChange}
+      />
 
-          <TextField
-            fullWidth
-            id="outlined-name"
-            label="Defesa"
-            name="defense"
-            type="number"
-            value={formInputs.defense}
-            onChange={handleChange}
-          />
+      <TextField
+        fullWidth
+        id="outlined-name"
+        label="Defesa"
+        name="defense"
+        type="number"
+        value={formInputs.defense}
+        onChange={handleChange}
+      />
 
-          <TextField
-            fullWidth
-            select
-            id="outlined-name"
-            label="Tipo"
-            name="cardType"
-            value={formInputs.cardType}
-            onChange={handleChange}
-          >
-            {cardTypes.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
+      <TextField
+        fullWidth
+        select
+        id="outlined-name"
+        label="Tipo"
+        name="cardType"
+        value={formInputs.cardType}
+        onChange={handleChange}
+      >
+        {cardTypes.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
 
-          <TextField
-            fullWidth
-            select
-            id="outlined-name"
-            label="Classes"
-            name="cardClass"
-            value={formInputs.cardClass}
-            onChange={handleChange}
-          >
-            {cardClasses.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
+      <TextField
+        fullWidth
+        select
+        id="outlined-name"
+        label="Classes"
+        name="cardClass"
+        value={formInputs.cardClass}
+        onChange={handleChange}
+      >
+        {cardClasses.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </TextField>
 
-          <Button
-            onClick={() => {
-              createCard(
-                formInputs.name,
-                formInputs.description,
-                formInputs.atack,
-                formInputs.defense,
-                formInputs.cardType,
-                formInputs.cardClass
-              );
-            }}
-            fullWidth
-            variant="contained"
-          >
-            Criar usuario
-          </Button>
-        </NewCardBox>
-      </GridSpace>
-    </Grid>
+      <Button
+        onClick={() => {
+          editCard(
+            id,
+            formInputs.name,
+            formInputs.description,
+            formInputs.atack,
+            formInputs.defense,
+            formInputs.cardType,
+            formInputs.cardClass
+          );
+        }}
+        fullWidth
+        variant="contained"
+      >
+        Salvar alterações
+      </Button>
+    </NewCardBox>
   );
 }
 

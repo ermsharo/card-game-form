@@ -106,7 +106,7 @@ const Grid = styled.div`
   }
 `;
 
-function Dashboard() {
+function NewCard({ editCard }: any) {
   const [formInputs, setFormInputs] = useState({
     name: "",
     description: "",
@@ -210,7 +210,8 @@ function Dashboard() {
 
             <Button
               onClick={() => {
-                createCard(
+                editCard(
+                  -1,
                   formInputs.name,
                   formInputs.description,
                   formInputs.atack,
@@ -231,4 +232,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default NewCard;

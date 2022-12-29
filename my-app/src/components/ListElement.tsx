@@ -3,6 +3,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import React from "react";
+import EditCard from "./EditCard";
 
 export interface cardType {
   id: number;
@@ -45,6 +46,7 @@ const BottonLine = styled.div`
 
 function ListElement({ element, deleteCard, editCard }: any) {
   const [expanded, setExpanded] = React.useState<boolean>(false);
+  const [editMode, setEditMode] = React.useState<boolean>(false);
   let { id, name, description, atack, defense, cardType, cardClass } = element;
 
   const handleChange =
@@ -58,16 +60,6 @@ function ListElement({ element, deleteCard, editCard }: any) {
         {expanded ? (
           <CardName>
             <div>{name}</div>{" "}
-            <BottonLine>
-              <div
-                onClick={() => {
-                  deleteCard(element.id);
-                }}
-              >
-                🗑️
-              </div>
-              <div>✏️</div>
-            </BottonLine>
           </CardName>
         ) : (
           <CardName>
@@ -77,18 +69,38 @@ function ListElement({ element, deleteCard, editCard }: any) {
         )}
       </MuiAccordionSummary>
       <MuiAccordionDetails>
-        <CardInfo>
-          <CardLine>
-            <div>⚔️ Ataque: {atack} </div>
-            <div>🛡️ Defesa: {defense} </div>
-          </CardLine>
+        {editMode !== true && (
+          <CardInfo>
+            <CardLine>
+              <div>⚔️ Ataque: {atack} </div>
+              <div>🛡️ Defesa: {defense} </div>
+              <BottonLine>
+                <div
+                  onClick={() => {
+                    deleteCard(id);
+                  }}
+                >
+                  🗑️
+                </div>
+                <div
+                  onClick={() => {
+                    setEditMode(true);
+                  }}
+                >
+                  ✏️
+                </div>
+              </BottonLine>
+            </CardLine>
 
-          <div> Descrição: {description} </div>
-          <CardLine>
-            <div> Tipo: {cardType} </div>
-            <div> Classe: {cardClass} </div>
-          </CardLine>
-        </CardInfo>
+            <div> Descrição: {description} </div>
+            <CardLine>
+              <div> Tipo: {cardType} </div>
+              <div> Classe: {cardClass} </div>
+            </CardLine>
+          </CardInfo>
+        )}
+
+        <EditCard element={element} editCard={editCard} />
       </MuiAccordionDetails>
     </MuiAccordion>
   );

@@ -19,12 +19,12 @@ function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" component="div">
-            app
+            Card app
           </Typography>
         </Toolbar>
       </AppBar>
       <CardList data={data} deleteCard={deleteCard} editCard={editCard} />
-      <NewCard />
+      <NewCard editCard={editCard} />
     </>
   );
 }

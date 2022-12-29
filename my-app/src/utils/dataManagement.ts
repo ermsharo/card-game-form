@@ -7,13 +7,12 @@ export const getIdList = () => {
 };
 
 export const getCardsList = () => {
-    return getIdList().map((cardId: number) => {
-      return JSON.parse(getCardById(cardId));
-    });
-  };
+  return getIdList().map((cardId: number) => {
+    return JSON.parse(getCardById(cardId));
+  });
+};
 
-
- const getCardById = (id: number): string => {
+const getCardById = (id: number): string => {
   let card: any = localStorage.getItem(`${id}`);
   if (card == null) card = undefined;
   return card;
@@ -22,8 +21,6 @@ export const getCardsList = () => {
 const removeItem = (key: string) => {
   localStorage.removeItem(key);
 };
-
-
 
 export const getLastId = () => {
   let referenceIdList = getIdList();
@@ -79,6 +76,23 @@ export const createCardObj = (
     cardType: cardType,
     cardClass: cardClass,
   };
+};
+
+export const editCardById = (
+  id: number,
+  name: string,
+  description: string,
+  atack: number,
+  defense: number,
+  cardType: string,
+  cardClass: string
+) => {
+  localStorage.setItem(
+    `${id}`,
+    JSON.stringify(
+      createCardObj(id, name, description, atack, defense, cardType, cardClass)
+    )
+  );
 };
 
 export const createCard = (

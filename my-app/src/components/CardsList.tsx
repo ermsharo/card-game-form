@@ -21,20 +21,6 @@ const CardsList = styled.div`
   flex-wrap: wrap;
 `;
 
-const getIdList = () => {
-  let idList = localStorage.getItem("idList");
-  if (idList === null) {
-    return [];
-  }
-  return JSON.parse(idList);
-};
-
-const getCardById = (id: number): string => {
-  let card: any = localStorage.getItem(`${id}`);
-  if (card == null) card = undefined;
-  return card;
-};
-
 interface cardType {
   id: number;
   name: string;
@@ -45,15 +31,7 @@ interface cardType {
   cardClass: string;
 }
 
-const getList = () => {
-  return getIdList().map((cardId: number) => {
-    return JSON.parse(getCardById(cardId));
-  });
-};
-
-console.log("Card list ->", getList());
-
-function CardList({ data, deleteCard, addCard }: any) {
+function CardList({ data, deleteCard, editCard }: any) {
   if (!data) return <h1>Erro ao carregar os dados</h1>;
 
   return (
@@ -64,7 +42,7 @@ function CardList({ data, deleteCard, addCard }: any) {
             <ListElement
               element={card}
               deleteCard={deleteCard}
-              addCard={addCard}
+              editCard={editCard}
             />
           </div>
         ))}
