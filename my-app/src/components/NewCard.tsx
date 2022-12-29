@@ -63,7 +63,7 @@ function NewCard({ editCard }: any) {
   return (
     <MuiAccordion expanded={expanded} onChange={handleChangeAccordion()}>
       <MuiAccordionSummary>
-        <CardTitle>{`Cadastrar nova carta  ➕`}</CardTitle>
+        <CardTitle>{`Cadastrar nova carta  🎴 `}</CardTitle>
       </MuiAccordionSummary>
       <NewCardBox>
         <CardInfo>

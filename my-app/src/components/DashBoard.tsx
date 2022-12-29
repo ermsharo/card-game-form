@@ -11,6 +11,10 @@ import ClassCardOptions from "./ClassCardsOptions";
 import TypeCardOptions from "./TypeCardsOptions";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
+import Stack from '@mui/material/Stack';
+import Switch from '@mui/material/Switch';
+
+
 const DashboardBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -20,7 +24,11 @@ const DashboardBox = styled.div`
   margin-top: 4rem;
 `;
 
-const DashboardSearchBox = styled.div``;
+const DashboardSearchBox = styled.div`
+display: flex;
+gap: 1.5rem;
+font-size: 1rem;
+`;
 
 const OptionsBox = styled.div`
   grid-column: 1/3;
@@ -36,6 +44,12 @@ function Dashboard() {
   function handleChange(evt: any) {
     setSearch(evt.target.value);
   }
+
+  const [searchSwitch, setSearchSwitch] = useState(true);
+
+  const handleChangeSearchSwitch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchSwitch(event.target.checked);
+  };
 
   const [data, deleteCard, editCard] = CardsManagement();
   return (
@@ -57,8 +71,9 @@ function Dashboard() {
         </OptionsBox>
 
         <CardListBox>
+               {search}
           <DashboardSearchBox>
-            {search}
+       
             <TextField
               fullWidth
               id="outlined-name"
@@ -66,6 +81,15 @@ function Dashboard() {
               value={search}
               onChange={handleChange}
             />
+                  <Stack direction="row" spacing={1} alignItems="center">
+        <div>Nome</div>
+        <Switch
+      checked={searchSwitch}
+      onChange={handleChangeSearchSwitch}
+      inputProps={{ 'aria-label': 'controlled' }}
+    />
+        <div>Id</div>
+      </Stack>
           </DashboardSearchBox>
           <CardList data={data} deleteCard={deleteCard} editCard={editCard} />
           <NewCard editCard={editCard} />
