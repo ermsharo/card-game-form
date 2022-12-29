@@ -55,7 +55,10 @@ function Dashboard() {
     setSearchSwitch(event.target.checked);
   };
 
-  const [data, deleteCard, editCard] = CardsManagement(search, searchSwitch);
+  const [data, fileteredData, deleteCard, editCard] = CardsManagement(
+    search,
+    searchSwitch
+  );
   return (
     <>
       <AppBar position="static">
@@ -93,7 +96,7 @@ function Dashboard() {
               <div>Id</div>
             </Stack>
           </DashboardSearchBox>
-          <CardList data={data} deleteCard={deleteCard} editCard={editCard} />
+          <CardList data={data} deleteCard={deleteCard} editCard={editCard}  fileteredData = {fileteredData} search={search}/>
           <NewCard editCard={editCard} />
         </CardListBox>
       </DashboardBox>

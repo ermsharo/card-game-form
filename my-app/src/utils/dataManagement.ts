@@ -48,7 +48,6 @@ export const getSearchList = (searchList: any) => {
   localStorage.setItem("searchList", JSON.stringify(searchList));
 };
 
-
 export const removeIdFromIdList = (id: number) => {
   console.log("remove id from list chamado", id);
   let idList = getIdList();

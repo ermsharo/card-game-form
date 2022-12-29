@@ -6,8 +6,23 @@ import {
   editCardById,
 } from "./dataManagement";
 
+const setSearchList = (searchList: any) => {
+  console.log("id list atualizando");
+  localStorage.setItem("searchList", JSON.stringify(searchList));
+};
+
+const getSearchList = () => {
+  let searchList = localStorage.getItem("searchList");
+  if (searchList === null) {
+    return [];
+  }
+  return JSON.parse(searchList);
+};
+
 export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
   const [data, setData] = useState<any>([]); //retorna a lista de cartas aqui
+  const [filteredData, setFilteredData] = useState<any>([]);
+
   const deleteCard = (id: number) => {
     removeIdFromIdList(id);
     setData(getCardsList());
@@ -30,25 +45,37 @@ export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
     } else {
       editCardById(id, name, description, atack, defense, cardType, cardClass);
     }
-
   };
 
   useEffect(() => {
     setData(getCardsList());
   }, [data]);
 
-  const filterDataFromText = () =>{
-    const filtered =  data.filter((cards:any) => cards.name.includes(searchText));
+  const filterDataFromText = () => {
+    const filtered = data.filter((cards: any) =>
+      cards.name.includes(searchText)
+    );
     console.log(filtered);
+    setFilteredData(filtered)
+  };
 
-  }
+  const filterDataFromId = () => {
+    const filtered = data.filter((cards: any) =>
+      cards.id === (Number(searchText))
+    );
+    console.log(filtered);
+    setFilteredData(filtered)
+  };
+
+  const verifyTags = () => {};
 
   const filterDataByChoice = () => {
     if (searchSwitch) {
-      console.log("Pequisando por id" )
-    }else{
-      console.log("Pequisando por nome" )
-      filterDataFromText()
+      console.log("Pequisando por id");
+      filterDataFromId();
+    } else {
+      console.log("Pequisando por nome");
+      filterDataFromText();
     }
   };
 
@@ -58,8 +85,8 @@ export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
 
   useEffect(() => {
     console.log("search text", searchText);
-    filterDataByChoice()
+    filterDataByChoice();
   }, [searchText]);
 
-  return [data, deleteCard, editCard];
+  return [data, filteredData, deleteCard, editCard];
 };
