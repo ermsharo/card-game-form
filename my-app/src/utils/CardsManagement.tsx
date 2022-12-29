@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { getIdList, getCardById } from "./dataManagement";
+import { getIdList, getCardById, removeIdFromIdList } from "./dataManagement";
 
 export const CardsManagement = () => {
   const [data, setData] = useState([]); //retorna a lista de cartas aqui
   const [update, setUpdate] = useState(false);
 
   const deleteCard = (id: number) => {
-    //Pega o card pelo id e deleta
+    removeIdFromIdList(id);
   };
   const editCard = () => {
     //Se não existir criar, caso contrario editar
@@ -20,7 +20,7 @@ export const CardsManagement = () => {
 
   useEffect(() => {
     setData(getList());
-  }, [update]);
+  }, [data]);
 
-  return [{ data }, deleteCard, editCard];
+  return [data, deleteCard, editCard];
 };

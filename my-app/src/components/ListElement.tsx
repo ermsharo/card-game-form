@@ -43,7 +43,7 @@ const BottonLine = styled.div`
   gap: 1.5rem;
 `;
 
-function ListElement({ element }: any) {
+function ListElement({ element, deleteCard, editCard }: any) {
   const [expanded, setExpanded] = React.useState<boolean>(false);
   let { id, name, description, atack, defense, cardType, cardClass } = element;
 
@@ -59,7 +59,13 @@ function ListElement({ element }: any) {
           <CardName>
             <div>{name}</div>{" "}
             <BottonLine>
-              <div>🗑️</div>
+              <div
+                onClick={() => {
+                  deleteCard(element.id);
+                }}
+              >
+                🗑️
+              </div>
               <div>✏️</div>
             </BottonLine>
           </CardName>

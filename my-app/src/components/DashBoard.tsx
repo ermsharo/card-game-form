@@ -7,8 +7,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { CardsManagement } from "./../utils/CardsManagement";
 
 function Dashboard() {
+  const [data, deleteCard, editCard] = CardsManagement();
   return (
     <>
       <AppBar position="static">
@@ -17,11 +19,12 @@ function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" component="div">
-            Photos
+            app
           </Typography>
         </Toolbar>
       </AppBar>
-      <CardList /> <NewCard />
+      <CardList data={data} deleteCard={deleteCard} editCard={editCard} />
+      <NewCard />
     </>
   );
 }

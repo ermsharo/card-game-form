@@ -12,6 +12,10 @@ export const getCardById = (id: number): string => {
   return card;
 };
 
+const removeItem = (key: string) => {
+  localStorage.removeItem(key);
+};
+
 export const getCardsList = () => {
   return getIdList().map((cardId: number) => {
     return JSON.parse(getCardById(cardId));
@@ -29,12 +33,29 @@ export const getLastId = () => {
   return parseInt(reference.slice(-1));
 };
 
+export const setIdList = (IdList: any) => {
+  console.log("id list atualizando");
+  localStorage.setItem("idList", JSON.stringify(IdList));
+};
+
+export const removeIdFromIdList = (id: number) => {
+  console.log("remove id from list chamado", id);
+  let idList = getIdList();
+
+  let filter = idList.filter(function (c: string) {
+    return c !== `${id}`;
+  });
+
+  setIdList(filter);
+  console.log("get id list", getIdList());
+};
+
 export const addId = () => {
   let nextId = getLastId() + 1;
   let idList: string[] = getIdList();
   let reference: string[] = [];
   reference.push(nextId.toString());
-  localStorage.setItem("idList", JSON.stringify(reference.concat(idList)));
+  setIdList(reference.concat(idList));
 };
 
 export const createCardObj = (

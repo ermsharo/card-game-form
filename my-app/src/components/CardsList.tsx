@@ -53,17 +53,23 @@ const getList = () => {
 
 console.log("Card list ->", getList());
 
-function CardList() {
+function CardList({ data, deleteCard, addCard }: any) {
+  if (!data) return <h1>Erro ao carregar os dados</h1>;
+
   return (
     <Grid>
       <CardsList>
-        {getIdList().map(
-          (cardId: number) =>
-            getCardById(cardId) != null && (
-              <ListElement element={JSON.parse(getCardById(cardId))} />
-            )
-        )}
+        {data.map((card: cardType) => (
+          <div>
+            <ListElement
+              element={card}
+              deleteCard={deleteCard}
+              addCard={addCard}
+            />
+          </div>
+        ))}
       </CardsList>
+
       <div></div>
     </Grid>
   );
