@@ -59,7 +59,7 @@ export const CardsManagement = (
     const filtered = data.filter((cards: any) =>
       cards.name.includes(searchText)
     );
-    console.log(filtered);
+    // console.log(filtered);
     setFilteredData(filtered);
   };
 
@@ -92,7 +92,7 @@ export const CardsManagement = (
   };
 
   useEffect(() => {
-    console.log("typeTags", typeTags);
+    // console.log("typeTags", typeTags);
   }, [classTags, typeTags]);
 
   return [data, filteredData, deleteCard, editCard];

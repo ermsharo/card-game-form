@@ -29,7 +29,7 @@ export const getLastId = () => {
   }
   let reference = getIdList();
   if (reference.length == 0) return 0;
-  console.log("reference array ", reference)
+  // console.log("reference array ", reference)
 
   return parseInt(reference[0]);
 };
@@ -47,7 +47,7 @@ export const getSearchList = (searchList: any) => {
 };
 
 export const removeIdFromIdList = (id: number) => {
-  console.log("remove id from list chamado", id);
+  // console.log("remove id from list chamado", id);
   let idList = getIdList();
 
   let filter = idList.filter(function (c: string) {
@@ -55,7 +55,7 @@ export const removeIdFromIdList = (id: number) => {
   });
 
   setIdList(filter);
-  console.log("get id list", getIdList());
+
 };
 
 export const addId = () => {
