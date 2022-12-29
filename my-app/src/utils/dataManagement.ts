@@ -18,9 +18,6 @@ const getCardById = (id: number): string => {
   return card;
 };
 
-const removeItem = (key: string) => {
-  localStorage.removeItem(key);
-};
 
 export const getLastId = () => {
   let referenceIdList = getIdList();
@@ -28,8 +25,7 @@ export const getLastId = () => {
     return 0;
   }
   let reference = getIdList();
-  if (reference.length == 0) return 0;
-  // console.log("reference array ", reference)
+  if (reference.length === 0) return 0;
 
   return parseInt(reference[0]);
 };
@@ -55,7 +51,6 @@ export const removeIdFromIdList = (id: number) => {
   });
 
   setIdList(filter);
-
 };
 
 export const addId = () => {

@@ -20,17 +20,17 @@ export const CardsManagement = (
     setData(getCardsList());
   };
 
-  const verifyClass = (element: any) => {
-    let elemClass = element.cardClass.toLowerCase();
-    if (classTags[elemClass]) return true;
-    return false;
-  };
-  const filterByTags = () => {
-    const results = filteredData.filter((element: any) => {
-      return verifyClass(element);
-    });
-    return results;
-  };
+  // const verifyClass = (element: any) => {
+  //   let elemClass = element.cardClass.toLowerCase();
+  //   if (classTags[elemClass]) return true;
+  //   return false;
+  // };
+  // const filterByTags = () => {
+  //   const results = filteredData.filter((element: any) => {
+  //     return verifyClass(element);
+  //   });
+  //   return results;
+  // };
 
   const editCard = (
     id: number,
@@ -71,6 +71,7 @@ export const CardsManagement = (
     setFilteredData(filtered);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const filterDataByChoice = () => {
     if (searchText === "") {
       setFilteredData(data);
@@ -87,9 +88,9 @@ export const CardsManagement = (
     filterDataByChoice();
   }, [searchText, data, classTags, typeTags, filterDataByChoice]);
 
-  const updateResearchFromTags = () => {
-    setFilteredData(filterByTags());
-  };
+  // const updateResearchFromTags = () => {
+  //   setFilteredData(filterByTags());
+  // };
 
   useEffect(() => {
     // console.log("typeTags", typeTags);

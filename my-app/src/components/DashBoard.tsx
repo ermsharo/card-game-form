@@ -1,14 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import CardList from "./CardsList";
 import NewCard from "./NewCard";
 import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { CardsManagement } from "./../utils/CardsManagement";
 import styled from "styled-components";
-import ClassCardOptions from "./ClassCardsOptions";
-import TypeCardOptions from "./TypeCardsOptions";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -25,7 +20,6 @@ const DashboardBox = styled.div`
 `;
 
 const HeaderBox = styled.div`
-
   padding: 2rem;
   font-size: 2rem;
   text-align: left;
@@ -40,12 +34,12 @@ const DashboardSearchBox = styled.div`
   }
 `;
 
-const OptionsBox = styled.div`
-  grid-column: 1/3;
-`;
+// const OptionsBox = styled.div`
+//   grid-column: 1/3;
+// `;
 
 const CardListBox = styled.div`
-  grid-column: 3/9;
+  grid-column: 1/9;
 `;
 
 function Dashboard() {
@@ -85,10 +79,10 @@ function Dashboard() {
         <HeaderBox>Gerenciador de cartas</HeaderBox>
       </AppBar>
       <DashboardBox>
-        <OptionsBox>
+        {/* <OptionsBox>
           <ClassCardOptions setClassTags={setClassTags} />
           <TypeCardOptions setTypeTags={setTypeTags} />
-        </OptionsBox>
+        </OptionsBox> */}
 
         <CardListBox>
           <DashboardSearchBox>
