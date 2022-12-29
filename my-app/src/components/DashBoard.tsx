@@ -58,12 +58,11 @@ function Dashboard() {
 
         <CardListBox>
           <DashboardSearchBox>
-            {" "}
+            {search}
             <TextField
               fullWidth
               id="outlined-name"
-              label="Nome"
-              name="name"
+              label="Pesquisar"
               value={search}
               onChange={handleChange}
             />

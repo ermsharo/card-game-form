@@ -14,22 +14,19 @@ const CardOptionsBox = styled.div`
 `;
 
 function TypeCardsOptions() {
-  const [cardClasses, setCardClasses] = React.useState({
-    mago: true,
-    paladino: true,
-    caçador: true,
-    druida: true,
-    qualquer: true,
+  const [cardTypes, setTypeCards] = React.useState({
+    magia: true,
+    criatura: true,
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCardClasses({
-      ...cardClasses,
+    setTypeCards({
+      ...cardTypes,
       [event.target.name]: event.target.checked,
     });
   };
 
-  const { mago, paladino, caçador, druida, qualquer } = cardClasses;
+  const { magia, criatura } = cardTypes;
 
   return (
     <CardOptionsBox>
@@ -37,36 +34,21 @@ function TypeCardsOptions() {
       <FormGroup>
         <FormControlLabel
           control={
-            <Checkbox checked={mago} onChange={handleChange} name="mago" />
+            <Checkbox checked={magia} onChange={handleChange} name="magia" />
           }
-          label="Mago"
+          label="Magia"
         />
         <FormControlLabel
           control={
             <Checkbox
-              checked={paladino}
+              checked={criatura}
               onChange={handleChange}
-              name="paladino"
+              name="criatura"
             />
           }
-          label="Paladino"
+          label="Criatura"
         />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={caçador}
-              onChange={handleChange}
-              name="caçador"
-            />
-          }
-          label="Caçador"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox checked={druida} onChange={handleChange} name="druida" />
-          }
-          label="Druida"
-        />
+
       </FormGroup>
     </CardOptionsBox>
   );
