@@ -17,10 +17,11 @@ import Switch from "@mui/material/Switch";
 const DashboardBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  width: 80vw;
+  width: 60vw;
   margin: auto;
   grid-column-gap: 2rem;
   margin-top: 4rem;
+  padding: 2rem;
 `;
 
 const DashboardSearchBox = styled.div`
@@ -43,14 +44,21 @@ const CardListBox = styled.div`
 function Dashboard() {
   const [search, setSearch] = useState("");
   const [searchSwitch, setSearchSwitch] = useState(true);
-  const [classTags, setClassTags] = useState(null);
-  const [typeTags , setTypeTags] = useState(null);
-
+  const [classTags, setClassTags] = useState({
+    mago: true,
+    paladino: true,
+    caçador: true,
+    druida: true,
+    qualquer: true,
+  });
+  const [typeTags, setTypeTags] = useState({
+    magia: true,
+    criatura: true,
+  });
 
   function handleChange(evt: any) {
     setSearch(evt.target.value);
   }
-
 
   const handleChangeSearchSwitch = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -60,7 +68,9 @@ function Dashboard() {
 
   const [data, fileteredData, deleteCard, editCard] = CardsManagement(
     search,
-    searchSwitch
+    searchSwitch,
+    classTags,
+    typeTags
   );
   return (
     <>
@@ -76,8 +86,8 @@ function Dashboard() {
       </AppBar>
       <DashboardBox>
         <OptionsBox>
-          <ClassCardOptions setClassTags = {setClassTags}/>
-          <TypeCardOptions  setTypeTags={setTypeTags}/>
+          <ClassCardOptions setClassTags={setClassTags} />
+          <TypeCardOptions setTypeTags={setTypeTags} />
         </OptionsBox>
 
         <CardListBox>
@@ -99,8 +109,14 @@ function Dashboard() {
               <div>Id</div>
             </Stack>
           </DashboardSearchBox>
-          <CardList data={data} deleteCard={deleteCard} editCard={editCard}  fileteredData = {fileteredData} search={search}/>
-          <NewCard editCard={editCard}  setSearch = {setSearch}/>
+          <CardList
+            data={data}
+            deleteCard={deleteCard}
+            editCard={editCard}
+            fileteredData={fileteredData}
+            search={search}
+          />
+          <NewCard editCard={editCard} setSearch={setSearch} />
         </CardListBox>
       </DashboardBox>
     </>

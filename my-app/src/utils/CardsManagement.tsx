@@ -6,7 +6,12 @@ import {
   editCardById,
 } from "./dataManagement";
 
-export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
+export const CardsManagement = (
+  searchText: string,
+  searchSwitch: boolean,
+  classTags: any,
+  typeTags: any
+) => {
   const [data, setData] = useState<any>([]); //retorna a lista de cartas aqui
   const [filteredData, setFilteredData] = useState<any>([]);
 
@@ -24,12 +29,12 @@ export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
     cardType: string,
     cardClass: string
   ) => {
-    console.log("edit card chamado");
     //Se não existir criar, caso contrario editar
     if (id === -1) {
       //Caso de criação
       createCard(name, description, atack, defense, cardType, cardClass);
     } else {
+      //caso de edição
       editCardById(id, name, description, atack, defense, cardType, cardClass);
     }
   };
@@ -68,6 +73,11 @@ export const CardsManagement = (searchText: string, searchSwitch: boolean) => {
     console.log("search text", searchText);
     filterDataByChoice();
   }, [searchText]);
+
+  useEffect(() => {
+    console.log("class tags", classTags);
+    console.log("type tags", typeTags);
+  }, [classTags, typeTags]);
 
   return [data, filteredData, deleteCard, editCard];
 };

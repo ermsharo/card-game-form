@@ -34,17 +34,14 @@ export const getLastId = () => {
 };
 
 export const setIdList = (IdList: any) => {
-  console.log("id list atualizando");
   localStorage.setItem("idList", JSON.stringify(IdList));
 };
 
 export const setSearchList = (searchList: any) => {
-  console.log("id list atualizando");
   localStorage.setItem("searchList", JSON.stringify(searchList));
 };
 
 export const getSearchList = (searchList: any) => {
-  console.log("id list atualizando");
   localStorage.setItem("searchList", JSON.stringify(searchList));
 };
 

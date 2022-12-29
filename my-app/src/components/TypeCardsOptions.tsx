@@ -21,6 +21,7 @@ function TypeCardsOptions({ setTypeTags }: any) {
       ...cardTypes,
       [event.target.name]: event.target.checked,
     });
+    setTypeTags(cardTypes);
   };
 
   const { magia, criatura } = cardTypes;
