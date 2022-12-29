@@ -92,6 +92,8 @@ function Dashboard() {
 
         <CardListBox>
           <DashboardSearchBox>
+            {JSON.stringify(classTags)}
+            {JSON.stringify(typeTags)}
             <TextField
               fullWidth
               id="outlined-name"
@@ -109,6 +111,7 @@ function Dashboard() {
               <div>Id</div>
             </Stack>
           </DashboardSearchBox>
+          {}
           <CardList
             data={data}
             deleteCard={deleteCard}

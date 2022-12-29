@@ -20,18 +20,17 @@ export const CardsManagement = (
     setData(getCardsList());
   };
 
-  const verifyClass = (element:any) =>{
+  const verifyClass = (element: any) => {
     let elemClass = element.cardClass.toLowerCase();
-    if(classTags[elemClass]) return true;
+    if (classTags[elemClass]) return true;
     return false;
-}
-  const filterByTags = () =>{
-    const results = filteredData.filter((element: any)=> {
-        return verifyClass(element);
-      });
-      return results;
-}
-
+  };
+  const filterByTags = () => {
+    const results = filteredData.filter((element: any) => {
+      return verifyClass(element);
+    });
+    return results;
+  };
 
   const editCard = (
     id: number,
@@ -56,8 +55,6 @@ export const CardsManagement = (
     setData(getCardsList());
   }, [data]);
 
-
-
   const filterDataFromText = () => {
     const filtered = data.filter((cards: any) =>
       cards.name.includes(searchText)
@@ -70,7 +67,6 @@ export const CardsManagement = (
     const filtered = data.filter(
       (cards: any) => cards.id === Number(searchText)
     );
-
 
     setFilteredData(filtered);
   };
@@ -91,13 +87,13 @@ export const CardsManagement = (
     filterDataByChoice();
   }, [searchText, data]);
 
-  const updateResearchFromTags = () =>{
+  const updateResearchFromTags = () => {
     setFilteredData(filterByTags());
-  }
+  };
 
   useEffect(() => {
     updateResearchFromTags();
-    console.log("typeTags", typeTags)
+    console.log("typeTags", typeTags);
   }, [classTags, typeTags, searchText, updateResearchFromTags]);
 
   return [data, filteredData, deleteCard, editCard];

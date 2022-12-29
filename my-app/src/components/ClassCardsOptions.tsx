@@ -24,7 +24,7 @@ function ClassCardOptions({ setClassTags }: any) {
       ...cardClasses,
       [event.target.name]: event.target.checked,
     });
-    console.log("card classes", cardClasses)
+    console.log("card classes", cardClasses);
 
     setClassTags(cardClasses);
   };
